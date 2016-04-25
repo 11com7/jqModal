@@ -363,7 +363,7 @@
 		 * (Function)  onShow       - User defined callback function fired when modal opened.
 		 * (Function)  onHide       - User defined callback function fired when modal closed.
 		 * (Function)  onLoad       - User defined callback function fired when ajax content loads.
-		 * (String)		 blockMsgClass- User defined exclusion parent class which are allowed to get focus even outside the active modal
+		 * (String)		 blockMsgClass- User defined exclusion parent class which are allowed to get focus even outside the active modal (like the jQueryUI datepicker)
 		 */
 		params: {
 			overlay: 50,
