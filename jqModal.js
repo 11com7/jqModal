@@ -6,7 +6,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * $Version: 1.4.2 (2016.04.16 +r27)
+ * $Version: 1.4.2 (2016.04.16 +r27a, patched)
  * Requires: jQuery 1.2.3+
  */
 
@@ -318,9 +318,16 @@
 	}, X = function(e){
 		// X: The Focus Examination Function (for modal: true dialogs)
 
-		var targetModal = $(e.target).data('jqm') ||
-		                  $(e.target).parents('.jqm-init:first').data('jqm');
-		var activeModal = ActiveModals[ActiveModals.length-1];
+		var $target = $(e.target), 
+				targetModal = $target.data('jqm') ||
+		                  $.target.parents('.jqm-init:first').data('jqm');
+		var activeModal = ActiveModals[ActiveModals.length-1],
+				activeModalOpts = $(activeModal).data('jqm');
+
+		// allow all elements with parents.blockMsgClass (used for jqui datepicker)
+		if ($target.parents('.'+activeModalOpts.blockMsgClass).length > 0) {
+			return true;
+		}
 
 		// allow bubbling if event target is within active modal dialog
 		return (targetModal && targetModal.ID === activeModal._jqmID) ?
@@ -356,6 +363,7 @@
 		 * (Function)  onShow       - User defined callback function fired when modal opened.
 		 * (Function)  onHide       - User defined callback function fired when modal closed.
 		 * (Function)  onLoad       - User defined callback function fired when ajax content loads.
+		 * (String)		 blockMsgClass- User defined exclusion parent class which are allowed to get focus even outside the active modal
 		 */
 		params: {
 			overlay: 50,
@@ -370,7 +378,8 @@
 			toTop: false,
 			onShow: onShow,
 			onHide: onHide,
-			onLoad: false
+			onLoad: false,
+			blockMsgClass: 'blockMsg'
 		},
 
 		// focusFunc is fired:

@@ -1,6 +1,9 @@
 jqModal Changes By Release
 ==========================
 
+## 1.4.2 (2016.04.24 +r27.1)
+* allow exclusions for elements which are children of .blockMsg
+
 ## 1.4.2 (2016.04.16 +r27)
 
 * restore parsing and assigning closeClass behavior in ajax loaded content
