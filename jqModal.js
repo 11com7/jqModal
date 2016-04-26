@@ -320,7 +320,7 @@
 
 		var $target = $(e.target), 
 				targetModal = $target.data('jqm') ||
-		                  $.target.parents('.jqm-init:first').data('jqm');
+		                  $target.parents('.jqm-init:first').data('jqm');
 		var activeModal = ActiveModals[ActiveModals.length-1],
 				activeModalOpts = $(activeModal).data('jqm');
 
