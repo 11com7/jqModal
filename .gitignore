@@ -10,7 +10,7 @@
 /.classpath
 /.buildpath
 /.settings/
+/.idea
 
-
-
-
+# as lib it ignores the package-lock
+/package-lock.json
